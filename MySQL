@@ -1,1 +1,51 @@
 
+DROP DATABASE IF EXISTS Wybory;
+
+DROP SCHEMA IF EXISTS Wybory;
+
+CREATE SCHEMA IF NOT EXISTS Wybory DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+USE Wybory;
+
+DROP DATABASE IF EXISTS Wybory;
+
+CREATE DATABASE Wybory
+DEFAULT CHARACTER SET utf8
+DEFAULT COLLATE utf8_general_ci;
+
+USE Wybory;
+
+CREATE TABLE KANDYDACI(
+User_ID int NOT NULL AUTO_INCREMENT,
+Name varchar(128),
+Surname varchar(128),
+Partia varchar(128) NOT NULL UNIQUE,
+PRIMARY KEY (User_ID)
+) DEFAULT CHARSET=utf8;
+
+CREATE TABLE Glosujacy(
+User_ID int NOT NULL AUTO_INCREMENT,
+Name varchar(128) NOT NULL ,
+Surname varchar(128) NOT NULL,
+Wiek int NOT NULL,
+Pesel int NOT NULL UNIQUE,	
+PRIMARY KEY (User_ID)
+) DEFAULT CHARSET=utf8;
+
+CREATE TABLE UZYTKOWNICY(
+User_ID int PRIMARY KEY AUTO_INCREMENT,
+Login int,
+Pass varchar(128) NOT NULL
+);
+
+
+--CREATE VIEW USERS_VIEW AS SELECT User_ID, Name, Surname, Email, Phone, Login, Account, Address, Town, ZipCode FROM USERS;
+
+INSERT INTO KANDYDACI( Name, Surname, Partia )
+VALUES ( "Adam", "Nowak", "partia");
+
+INSERT INTO Glosujacy ( Name, Surname, Wiek, Pesel)
+Values ("Jan", "Nowak", 29, 87093049232);
+
+INSERT INTO UZYTKOWNICY( Login, Pass)
+VALUES (87093049232, admin123);
